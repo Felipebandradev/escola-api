@@ -1,0 +1,23 @@
+{
+  "type": "module",
+  "name": "escola-api",
+  "version": "1.0.0",
+  "description": "Api node js + express com CRUD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Felipebandradev/escola-api.git"
+  },
+  "author": "A Turma toda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Felipebandradev/escola-api/issues"
+  },
+  "homepage": "https://github.com/Felipebandradev/escola-api#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
