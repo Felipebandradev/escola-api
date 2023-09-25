@@ -41,4 +41,60 @@ function inserir(aluno, res){
 };
 
 
-export { ler, inserir };
+// ler um aluno
+
+function ler_um(id,res){
+    const sql = "SELECT * FROM alunos WHERE id = ?";
+
+    conexao.query(sql,id, (erro, resultados)=>{
+      if (resultados === 0) {
+        res.status(204).end();
+        return;
+      }
+
+      if (erro) {
+        res.status(400).json(erro.code);
+      } else {
+        res.status(201).json(resultados[0]);
+      }
+    })
+}
+
+function atualizar(id, aluno, res){
+    const sql = "UPDATE alunos SET ? WHERE id = ?";
+
+    conexao.query(sql,[aluno, id] , (erro, resultados) =>{
+        if(resultados === 0){
+            res.status(204).end();
+            return;
+        }
+
+        if(erro){
+            res.status(400).json(erro.code);
+        } else {
+           // res.status(201).json( {"Status": "Atualizado com Sucesso"})
+           res.status(200).json({...aluno,id}); // spread operator "..."
+        }
+    })
+}
+
+function deletar(id, res){
+    const sql = "DELETE FROM alunos WHERE id = ?";
+
+    conexao.query(sql,id, (erro,resultados)=>{
+        if(resultados === 0){
+            res.status(204).end();
+            return;
+        }
+
+        if (erro){
+            res.status(400).json(erro.code);
+        } else {
+            res.status(200).json({"Status" : "Aluno deletado com sucesso"});
+        }
+    })
+
+}
+
+
+export { ler, inserir, ler_um, atualizar, deletar};
