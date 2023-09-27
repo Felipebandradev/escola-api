@@ -1,10 +1,13 @@
 import express from "express"; // importando o pacote 
-import { inserir, ler, ler_um, atualizar, deletar } from './src/aluno.js'; // importando a função
+import { inserir, ler, ler_um, atualizar, deletar }from './src/aluno.js'; // importando a função
+import cors from "cors";
 const app = express(); // armazenando o express numa variavel para facilitar na hora da aplicação
 const porta = process.env.PORT || 3306;
 
 // adicionando suporte ao formato json
 app.use(express.json());
+
+app.use(cors());
 
 // adionando suporte a dados vindos de formularios 
 app.use(express.urlencoded({extended : true}));
